@@ -21,7 +21,6 @@ class _MyAppState extends State<MyApp> {
 
   void enterFullScreen(FullScreenMode fullScreenMode) async {
     await fullscreen.enterFullScreen(fullScreenMode);
-    
   }
 
   void exitFullScreen() async {
