@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class FullScreen {
+  // meothod channel instal
   static const MethodChannel _channel = const MethodChannel('fullscreen');
 
+  /// To enable fullscreen mode, pass the fullscreen mode as an argument the the enterFullScreen method of the FullScreen class.
   Future enterFullScreen(FullScreenMode fullScreenMode) async {
     try {
       if (fullScreenMode == FullScreenMode.EMERSIVE) {
@@ -19,6 +21,7 @@ class FullScreen {
     }
   }
 
+  /// to get the current status of the SystemUI
   Future<bool> get isFullScreen async {
     bool status;
     try {
@@ -29,6 +32,7 @@ class FullScreen {
     return status;
   }
 
+  /// Exit full screen
   Future exitFullScreen() async {
     try {
       await _channel.invokeMethod('exitFullScreen');
