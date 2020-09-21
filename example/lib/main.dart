@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:fullscreen/fullscreen.dart';
 
 void main() {
@@ -14,14 +11,22 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-  Fullscreen fullscreen = new Fullscreen();
+  Fullscreen fullscreen;
 
   @override
   void initState() {
     super.initState();
-    // initPlatformState();
+    fullscreen = new Fullscreen();
   }
+
+  void enterFullScreen(FullScreenMode fullScreenMode) async {
+    await fullscreen.enterFullScreen(fullScreenMode);
+  }
+
+  void exitFullScreen() async {
+    await fullscreen.exitFullScreen();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,20 +34,24 @@ class _MyAppState extends State<MyApp> {
         floatingActionButton: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FloatingActionButton(onPressed: (){
-              fullscreen.enterFullScreen(FullScreenMode.EMERSIVE_STINGY);
-            }, child: new Icon(Icons.fullscreen),),
-            FloatingActionButton(onPressed: (){
-              fullscreen.exitFullScreen();
-            }, child: new Icon(Icons.fullscreen_exit),),
+            FloatingActionButton(
+              onPressed: () async {
+                enterFullScreen(FullScreenMode.EMERSIVE_STINGY);
+              },
+              child: new Icon(Icons.fullscreen),
+            ),
+            FloatingActionButton(
+              onPressed: () async {
+                exitFullScreen();
+              },
+              child: new Icon(Icons.fullscreen_exit),
+            ),
           ],
         ),
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Fullscreen plugin'),
         ),
-        body: Center(
-    child: Text('Running on'),
-        ),
+        body: Center(child: new Text('Flutter full screen plugin')),
       ),
     );
   }

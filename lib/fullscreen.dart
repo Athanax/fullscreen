@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 class Fullscreen {
   static const MethodChannel _channel = const MethodChannel('fullscreen');
+  
 
   Future enterFullScreen(FullScreenMode fullScreenMode) async {
     try {
@@ -17,6 +18,17 @@ class Fullscreen {
     } catch (e) {
       print(e);
     }
+  }
+  
+  Future<bool> get isFullScreen async {
+    bool status;
+    try{
+       status = await _channel.invokeMethod("status");
+
+    } catch (e){
+      print(e);
+    }
+    return status;
   }
 
   Future exitFullScreen() async {
