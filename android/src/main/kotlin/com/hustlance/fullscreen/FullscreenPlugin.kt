@@ -38,7 +38,7 @@ public class FullscreenPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
             "emersive" -> {
                 emersive()
             }
-            "emersiveStingy" -> {
+            "emersiveSticky" -> {
                 emersiveStingy()
             }
             "leanBack" -> {

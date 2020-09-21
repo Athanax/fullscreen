@@ -1,3 +1,3 @@
-## 0.0.1
+## [1.0.0] Monday, 21 September, 2020
 
-* TODO: Describe initial release.
+* First version

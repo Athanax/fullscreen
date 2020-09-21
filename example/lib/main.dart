@@ -11,16 +11,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Fullscreen fullscreen;
+  FullScreen fullscreen;
 
   @override
   void initState() {
     super.initState();
-    fullscreen = new Fullscreen();
+    fullscreen = new FullScreen();
   }
 
   void enterFullScreen(FullScreenMode fullScreenMode) async {
     await fullscreen.enterFullScreen(fullScreenMode);
+    
   }
 
   void exitFullScreen() async {
@@ -36,7 +37,7 @@ class _MyAppState extends State<MyApp> {
           children: <Widget>[
             FloatingActionButton(
               onPressed: () async {
-                enterFullScreen(FullScreenMode.EMERSIVE_STINGY);
+                enterFullScreen(FullScreenMode.EMERSIVE_STICKY);
               },
               child: new Icon(Icons.fullscreen),
             ),

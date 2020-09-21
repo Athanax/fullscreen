@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-class Fullscreen {
+class FullScreen {
   static const MethodChannel _channel = const MethodChannel('fullscreen');
   
 
@@ -10,8 +10,8 @@ class Fullscreen {
     try {
       if (fullScreenMode == FullScreenMode.EMERSIVE) {
         await _channel.invokeMethod('emersive');
-      } else if (fullScreenMode == FullScreenMode.EMERSIVE_STINGY) {
-        await _channel.invokeMethod('emersiveStingy');
+      } else if (fullScreenMode == FullScreenMode.EMERSIVE_STICKY) {
+        await _channel.invokeMethod('emersiveSticky');
       } else if (fullScreenMode == FullScreenMode.LEANBACK) {
         await _channel.invokeMethod('leanBack');
       }
@@ -40,4 +40,4 @@ class Fullscreen {
   }
 }
 
-enum FullScreenMode { EMERSIVE, EMERSIVE_STINGY, LEANBACK }
+enum FullScreenMode { EMERSIVE, EMERSIVE_STICKY, LEANBACK }
