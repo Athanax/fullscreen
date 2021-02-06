@@ -1,7 +1,7 @@
 # fullscreen
 
 # Introduction
-This is a flutter plugin that makes it easy to enable fullscreen in flutter application. The implements the three fullscreen modes of the android platform. The plugin works well in the android platform but isn't supported in IOS.
+This is a flutter plugin that makes it easy to enable fullscreen in flutter application. The implements the three fullscreen modes of the android platform and those for iOS. 
 
 # Summary
 Some content is best experienced fullscreen, like videos, games, image galleries, books, and slides in a presentation. This page shows how you can engage users more deeply with content in fullscreen and protect users from exiting the app accidentally.

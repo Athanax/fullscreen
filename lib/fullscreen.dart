@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:io' show Platform;
 import 'package:flutter/services.dart';
 
 class FullScreen {
@@ -8,16 +8,20 @@ class FullScreen {
 
   /// To enable fullscreen mode, pass the fullscreen mode as an argument the the enterFullScreen method of the FullScreen class.
   Future enterFullScreen(FullScreenMode fullScreenMode) async {
-    try {
-      if (fullScreenMode == FullScreenMode.EMERSIVE) {
-        await _channel.invokeMethod('emersive');
-      } else if (fullScreenMode == FullScreenMode.EMERSIVE_STICKY) {
-        await _channel.invokeMethod('emersiveSticky');
-      } else if (fullScreenMode == FullScreenMode.LEANBACK) {
-        await _channel.invokeMethod('leanBack');
+    if (Platform.isIOS) {
+      SystemChrome.setEnabledSystemUIOverlays([]);
+    } else if (Platform.isAndroid) {
+      try {
+        if (fullScreenMode == FullScreenMode.EMERSIVE) {
+          await _channel.invokeMethod('emersive');
+        } else if (fullScreenMode == FullScreenMode.EMERSIVE_STICKY) {
+          await _channel.invokeMethod('emersiveSticky');
+        } else if (fullScreenMode == FullScreenMode.LEANBACK) {
+          await _channel.invokeMethod('leanBack');
+        }
+      } catch (e) {
+        print(e);
       }
-    } catch (e) {
-      print(e);
     }
   }
 
@@ -34,10 +38,14 @@ class FullScreen {
 
   /// Exit full screen
   Future exitFullScreen() async {
-    try {
-      await _channel.invokeMethod('exitFullScreen');
-    } catch (e) {
-      print(e);
+    if (Platform.isIOS) {
+      SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    } else if (Platform.isAndroid) {
+      try {
+        await _channel.invokeMethod('exitFullScreen');
+      } catch (e) {
+        print(e);
+      }
     }
   }
 }
