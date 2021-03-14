@@ -1,6 +1,6 @@
 name: fullscreen
 description: This is a flutter plugin that makes it easy to enable fullscreen in flutter application. The implements the three fullscreen modes of the android platform.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/Athanax/fullscreen
 
 environment:

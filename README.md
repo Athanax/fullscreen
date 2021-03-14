@@ -47,20 +47,17 @@ Import the package
 import 'package:fullscreen/fullscreen.dart';
 ```
 
-
-Create an instance of the FullScreen class
-``` dart
-  FullScreen fullscreen = new FullScreen()
-```
 To enable fullscreen mode with Sticky emersive, pass the fullscreen mode (FullScreenMode.EMERSIVE_STICKY)as an argument the the enterFullScreen method of the FullScreen class.
 
 ``` dart
-  await fullscreen.enterFullScreen(FullScreenMode.EMERSIVE_STICKY);
+    // To enter FullScreenMode.EMERSIVE_STICKY, 
+    await FullScreen.enterFullScreen(FullScreenMode.EMERSIVE_STICKY);
 ```
 
 To exit fullscreen, call the exitFullScreen method of the FullScreen class
-``` dart
-  await fullscreen.exitFullScreen();
+``` dart 
+    // To exit fullscreen mode
+    await FullScreen.exitFullScreen();
 ```
 
 ## Getting Started with flutter?
