@@ -65,7 +65,7 @@ public class FullscreenPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
-        TODO("Not yet implemented")
+        
     }
 
     override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
@@ -73,7 +73,7 @@ public class FullscreenPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
     }
 
     override fun onDetachedFromActivity() {
-        TODO("Not yet implemented")
+        
     }
 
 

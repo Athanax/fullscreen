@@ -11,20 +11,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  FullScreen fullscreen;
-
-  @override
-  void initState() {
-    super.initState();
-    fullscreen = new FullScreen();
-  }
-
   void enterFullScreen(FullScreenMode fullScreenMode) async {
-    await fullscreen.enterFullScreen(fullScreenMode);
+    await FullScreen.enterFullScreen(fullScreenMode);
   }
 
   void exitFullScreen() async {
-    await fullscreen.exitFullScreen();
+    await FullScreen.exitFullScreen();
   }
 
   @override
