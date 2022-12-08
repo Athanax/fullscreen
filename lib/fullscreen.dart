@@ -1,53 +1,18 @@
 import 'dart:async';
-import 'dart:io' show Platform;
-import 'package:flutter/services.dart';
+
+import 'src/fullscreen_native.dart'
+    if (dart.library.html) 'src/fullscreen_web.dart';
 
 class FullScreen {
-  // meothod channel instal
-  static const MethodChannel _channel = const MethodChannel('fullscreen');
-
-  /// To enable fullscreen mode, pass the fullscreen mode as an argument the the enterFullScreen method of the FullScreen class.
-  static Future<void> enterFullScreen(FullScreenMode fullScreenMode) async {
-    if (Platform.isIOS) {
-      SystemChrome.setEnabledSystemUIOverlays([]);
-    } else if (Platform.isAndroid) {
-      try {
-        if (fullScreenMode == FullScreenMode.EMERSIVE) {
-          await _channel.invokeMethod('emersive');
-        } else if (fullScreenMode == FullScreenMode.EMERSIVE_STICKY) {
-          await _channel.invokeMethod('emersiveSticky');
-        } else if (fullScreenMode == FullScreenMode.LEANBACK) {
-          await _channel.invokeMethod('leanBack');
-        }
-      } catch (e) {
-        print(e);
-      }
-    }
-  }
+  static Future<void> enterFullScreen(
+          [FullScreenMode fullScreenMode = FullScreenMode.EMERSIVE]) =>
+      FullScreenPlatform.enterFullScreen(fullScreenMode);
 
   /// to get the current status of the SystemUI
-  static Future<bool?> get isFullScreen async {
-    bool? status;
-    try {
-      status = await _channel.invokeMethod("status");
-    } catch (e) {
-      print(e);
-    }
-    return status;
-  }
+  static Future<bool?> get isFullScreen => FullScreenPlatform.isFullScreen;
 
   /// Exit full screen
-  static Future<void> exitFullScreen() async {
-    if (Platform.isIOS) {
-      SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-    } else if (Platform.isAndroid) {
-      try {
-        await _channel.invokeMethod('exitFullScreen');
-      } catch (e) {
-        print(e);
-      }
-    }
-  }
+  static Future<void> exitFullScreen() => FullScreenPlatform.exitFullScreen();
 }
 
 enum FullScreenMode { EMERSIVE, EMERSIVE_STICKY, LEANBACK }

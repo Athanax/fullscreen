@@ -10,7 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_web_plugins:
+    sdk: flutter
+    
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -31,6 +33,7 @@ flutter:
         pluginClass: FullscreenPlugin
       ios:
         pluginClass: FullscreenPlugin
+      web:
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
